@@ -1,3 +1,22 @@
 .logo{
     height: 77px;
 }
+
+.video-background {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-background video {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .section-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+  }
