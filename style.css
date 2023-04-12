@@ -1,51 +1,51 @@
 /* Navbar section */
 
 .logo {
-  height: 77px;
+    height: 77px;
 }
 
 .nav-link {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  /* margin: 0 30px; */
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    /* margin: 0 30px; */
 }
 
 .nav-link:hover {
-  color: black;
-  text-decoration: none;
-  transition: all 0.9s ease;
+    color: black;
+    text-decoration: none;
+    transition: all 0.9s ease;
 }
 
 #overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 875px;
-  background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 875px;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .video-background {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .video-background video {
-  position: relative;
-  left: 50%;
-  top: 38%;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  z-index: -1;
+    position: relative;
+    left: 50%;
+    top: 38%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 @media screen and (max-width: 380px) {
-  .logo {
-      height: 50px;
-  }
+    .logo {
+        height: 50px;
+    }
 }
 
 /* Navbar section */
@@ -53,52 +53,99 @@
 /* First section */
 
 @media screen and (max-width: 991px) {
-  .centerContent {
-      margin-top: -20px !important;
-  }
+    .centerContent {
+        margin-top: -20px !important;
+    }
 }
 
 .centerContent {
-  margin-top: 100px;
+    margin-top: 100px;
 }
 
 .section-content {
-  position: relative;
-  z-index: 1;
-  padding: 20px;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
 }
 
 .fix-padding {
-  position: relative;
-  bottom: 210px;
+    position: relative;
+    bottom: 210px;
 }
 
 .my-hr {
-  border: 2px solid rgb(250, 32, 105);
-  margin: 0 auto;
-  opacity: 1;
+    border: 2px solid rgb(250, 32, 105);
+    margin: 0 auto;
+    opacity: 1;
 }
 
 .h1logo {
-  display: block;
-  width: 400px;
-  position: relative;
-  margin: 0 auto;
+    display: block;
+    width: 400px;
+    position: relative;
+    margin: 0 auto;
 }
 
 h1 {
-  font-size: 40px !important;
-  font-weight: 700 !important;
-  color: #fff;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins' !important;
+    font-size: 40px !important;
+    font-weight: 700 !important;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins' !important;
 }
 
 h1 b {
-  font-size: 55px !important;
+    font-size: 55px !important;
 }
 
 
 /* First section */
+
+/* Second section */
+
+#chisiamo {
+    background-color: rgb(61, 0, 61);
+    position: relative;
+    bottom: 210px;
+}
+
+.whiteText{
+    color: #fff;
+}
+
+.pchisiamo {
+    font-size: 25px !important;
+    font-weight: 500 !important;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins'
+}
+
+.myhr2{
+    border: 2px solid rgb(250, 32, 105);
+    margin: 0 auto;
+    opacity: 1;
+}
+
+.pinkText{
+    color: rgb(250, 32, 105);
+    font-size: large;
+}
+
+.myboldtext {
+    font-family: 'impact', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 50px;
+}
+
+@media screen and (max-width: 575px) {
+    .myhr2{
+        margin : 0 25%;
+    }
+}
+
+/* Second section */
