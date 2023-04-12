@@ -1,25 +1,104 @@
-.logo{
-    height: 77px;
+/* Navbar section */
+
+.logo {
+  height: 77px;
+}
+
+.nav-link {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  /* margin: 0 30px; */
+}
+
+.nav-link:hover {
+  color: black;
+  text-decoration: none;
+  transition: all 0.9s ease;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 875px;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .video-background {
-    position: relative;
-    overflow: hidden;
-  }
+  position: relative;
+  overflow: hidden;
+}
 
-  .video-background video {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    z-index: -1;
+.video-background video {
+  position: relative;
+  left: 50%;
+  top: 38%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+@media screen and (max-width: 380px) {
+  .logo {
+      height: 50px;
   }
-  
-  .section-content {
-    position: relative;
-    z-index: 1;
-    padding: 20px;
+}
+
+/* Navbar section */
+
+/* First section */
+
+@media screen and (max-width: 991px) {
+  .centerContent {
+      margin-top: -20px !important;
   }
+}
+
+.centerContent {
+  margin-top: 100px;
+}
+
+.section-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+.fix-padding {
+  position: relative;
+  bottom: 210px;
+}
+
+.my-hr {
+  border: 2px solid rgb(250, 32, 105);
+  margin: 0 auto;
+  opacity: 1;
+}
+
+.h1logo {
+  display: block;
+  width: 400px;
+  position: relative;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 40px !important;
+  font-weight: 700 !important;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins' !important;
+}
+
+h1 b {
+  font-size: 55px !important;
+}
+
+
+/* First section */
