@@ -148,4 +148,51 @@ h1 b {
     }
 }
 
+.myButtonText {
+    color: rgb(61, 0, 61);
+}
+
+.myButton {
+  border-radius: 20px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.myButton:hover {
+    background-color: rgb(250, 32, 105);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.myButton:hover .myButtonText {
+    color: #fff;
+}
+
+button p.myboldtext {
+    position: relative;
+    margin: auto auto;
+}
+
+@media screen and (max-width: 992px) {
+  button p.myboldtext {
+    font-size: 30px !important;
+    position: relative;
+}
+}
+
+@media screen and (max-width: 768px) {
+  button p.myboldtext {
+    font-size: 25px !important;
+    position: relative;
+}
+}
+
+@media screen and (max-width: 575px) {
+  button p.myboldtext {
+    font-size: 50px !important;
+    position: relative;
+}
+}
+
+
 /* Second section */
