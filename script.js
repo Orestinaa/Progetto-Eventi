@@ -140,3 +140,54 @@ window.addEventListener('resize', function () {
     hrAnimation('hr3');
     hrAnimation('hr4');
 });
+
+
+const buttonsObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // L'elemento è appena entrato nella viewport
+            console.log('L\'elemento è stato visualizzato per la prima volta!');
+            observer.unobserve(entry.target);
+
+            // Eseguire il codice che si vuole
+            buttonsAnimation(entry.target.id);
+        }
+    });
+}, options);
+
+// Selezionare l'elemento che si vuole monitorare
+const buttonsElement1 = document.getElementById('button1');
+const buttonsElement2 = document.getElementById('button2');
+
+// Iniziare l'osservazione dell'elemento
+buttonsObserver.observe(buttonsElement1);
+buttonsObserver.observe(buttonsElement2);
+
+function buttonsAnimation(elementId) {
+    // create animation with the opacity
+
+    let buttonElement = document.getElementById(elementId);
+    let opacityAttuale = 0;
+    const opacityFinale = 1;
+    const durataAnimazione = 2000; // Durata dell'animazione in millisecondi
+    let inizioAnimazione = null;
+
+    function anima(timestamp) {
+        if (!inizioAnimazione) {
+            inizioAnimazione = timestamp;
+        }
+
+        const progresso = timestamp - inizioAnimazione;
+        const percentuale = Math.min(progresso / durataAnimazione, 1);
+
+        opacityAttuale = percentuale * opacityFinale;
+        buttonElement.style.opacity = opacityAttuale;
+
+        if (progresso < durataAnimazione) {
+            requestAnimationFrame(anima);
+        } else {
+            buttonElement.style.opacity = opacityFinale;
+        }
+    }
+    requestAnimationFrame(anima);
+}

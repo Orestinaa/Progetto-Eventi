@@ -156,6 +156,7 @@ h1 b {
   border-radius: 20px;
   width: 100%;
   margin-bottom: 50px;
+  opacity: 0;
 }
 
 .myButton:hover {
