@@ -8,7 +8,6 @@ const numbersObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             // L'elemento è appena entrato nella viewport
-            console.log('L\'elemento è stato visualizzato per la prima volta!');
             observer.unobserve(entry.target);
 
             // Eseguire il codice che si vuole
@@ -79,10 +78,7 @@ const hrObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             // L'elemento è appena entrato nella viewport
-            console.log('L\'elemento è stato visualizzato per la prima volta!');
             observer.unobserve(entry.target);
-
-            console.log('debug')
 
             // Eseguire il codice che si vuole
             hrAnimation(entry.target.id)
@@ -146,7 +142,6 @@ const buttonsObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             // L'elemento è appena entrato nella viewport
-            console.log('L\'elemento è stato visualizzato per la prima volta!');
             observer.unobserve(entry.target);
 
             // Eseguire il codice che si vuole
@@ -158,10 +153,12 @@ const buttonsObserver = new IntersectionObserver((entries, observer) => {
 // Selezionare l'elemento che si vuole monitorare
 const buttonsElement1 = document.getElementById('button1');
 const buttonsElement2 = document.getElementById('button2');
+const buttonsElement3 = document.getElementById('button3');
 
 // Iniziare l'osservazione dell'elemento
 buttonsObserver.observe(buttonsElement1);
 buttonsObserver.observe(buttonsElement2);
+buttonsObserver.observe(buttonsElement3);
 
 function buttonsAnimation(elementId) {
     // create animation with the opacity
@@ -191,3 +188,26 @@ function buttonsAnimation(elementId) {
     }
     requestAnimationFrame(anima);
 }
+
+let myIndex = 0;
+
+function myCarousel() {
+    let i;
+    // let x = document.getElementsByClassName("mySlides");
+    let myDiv = document.getElementById("myCarousel");
+
+    myIndex++;
+
+    if (myIndex > 3) { 
+        myIndex = 1
+    }
+
+    console.log("images/fotoDisco" + myIndex + ".png")
+
+    myDiv.style.backgroundImage = "url(images/fotoDisco" + myIndex + ".png)";
+    // x[myIndex - 1].style.display = "block";
+
+    setTimeout(myCarousel, 6000);
+}
+
+myCarousel()
