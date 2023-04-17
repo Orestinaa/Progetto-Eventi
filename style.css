@@ -197,3 +197,105 @@ button p.myboldtext {
 
 
 /* Second section */
+
+/* Third section */
+
+.fix-gap {
+    position: relative;
+    bottom: 210px;
+}
+
+.imgSlider {
+    width: 1920px;
+    height: 800px;
+    object-fit: cover;
+}
+
+.mySlides {
+    display: none;
+    animation-name: fadeIn;
+    animation-duration: 2.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#myCarousel{
+    width: 1920px;
+    height: 800px;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center center;
+    transition: background-image 1s ease-in-out;
+
+}
+
+.logoCarousel{
+    height: 150px;
+    position: relative;
+    margin: auto auto;
+    top: 180px;
+}
+
+.carouselButton{
+    position: relative;
+    margin: auto auto;
+    top: 220px;
+    border-radius: 20px;
+    width: 250px;
+    height: 70px;
+    background-color: transparent;
+    border: #fff solid 2px;
+}
+
+.carouselButton:hover {
+    background-color: #fff;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.carouselButton:hover .textCarousel {
+    transition: all 0.3s ease;
+    color: rgb(250, 32, 105);
+}
+
+.textCarousel{
+    position: relative;
+    margin: auto auto;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: 'Poppins';
+    letter-spacing: 5px;
+    bottom: 5px;
+}
+
+.myboldtextCarousel{
+    font-family: 'impact', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 50px !important;
+}
+
+@media screen and (max-width: 540px) {
+    .logoCarousel{
+        height: 100px;
+        position: relative;
+        margin: auto auto;
+        top: 180px;
+    }
+
+    .myboldtextCarousel{
+        font-family: 'impact', sans-serif !important;
+        font-weight: 500 !important;
+        font-size: 30px !important;
+        top: 2px
+    }
+}
+
+/* Third section */
