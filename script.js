@@ -100,7 +100,7 @@ hrObserver.observe(hrElement4);
 
 function hrAnimation(elementId) {
 
-    
+
 
 
     let hrElement = document.getElementById(elementId);
@@ -198,11 +198,9 @@ function myCarousel() {
 
     myIndex++;
 
-    if (myIndex > 3) { 
+    if (myIndex > 3) {
         myIndex = 1
     }
-
-    console.log("images/fotoDisco" + myIndex + ".png")
 
     myDiv.style.backgroundImage = "url(images/fotoDisco" + myIndex + ".png)";
     // x[myIndex - 1].style.display = "block";
@@ -211,3 +209,254 @@ function myCarousel() {
 }
 
 myCarousel()
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Utilizzata la funzione DOMContentLoaded a causa di un conflitto tra la libreria JS della navbar e il fetch.
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "token 1d237fea-70d2-44d0-ad6b-8ea8012838ca");
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+
+    let eventList = [];
+    let list = [];
+    let eventArray = [];
+
+    fetch("https://events.abattaglia.it/api/event/list", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            eventList = result;
+            for (let i = 0; i < eventList.length; i++) {
+                list.push(eventList[i].name);
+            }
+
+            addEvents(eventList);
+        })
+        .catch(error => console.log('error', error));
+
+    function addEvents(eventList) {
+        eventList.forEach(event => {
+            let eventObj = new Event(event.id, event.title, event.location, event.poster, event.activitiesCount, event.startsAt, event.endsAt);
+            eventArray.push(eventObj);
+        });
+    }
+
+    class Event {
+        constructor(id, title, location, poster, activitiesCount, startsAt, endsAt) {
+            this.id = id;
+            this.title = title;
+            this.location = location;
+            this.poster = poster;
+            this.activitiesCount = activitiesCount;
+            startsAt = startsAt.replace(/T/g, " ");
+            this.startsAt = startsAt;
+            endsAt = endsAt.replace(/T/g, " ");
+            this.endsAt = endsAt;
+
+            this.activities = null;
+
+            if (this.activitiesCount >= 1) {
+                this.activities = new Activity(this.id);
+            }
+        }
+
+        printEvent() {
+            console.log(this.id, this.title, this.location, this.poster, this.activitiesCount, this.startsAt, this.endsAt);
+
+            if (this.activitiesCount >= 1) {
+                this.activities.printActivity();
+            }
+        }
+
+        getCard() {
+            let card = document.createElement("div");
+            card.classList.add("card");
+            card.id = "eventCard";
+
+            let poster = document.createElement("img");
+            poster.classList.add("poster");
+            poster.src = this.poster;
+            poster.alt = "Poster";
+
+            let container = document.createElement("div");
+            container.classList.add("container");
+
+            let title = document.createElement("h4");
+            title.classList.add("title");
+            title.classList.add("text-center")
+            title.innerHTML = this.title;
+
+            let location = document.createElement("p");
+            location.classList.add("location");
+            location.innerHTML = this.location;
+
+            let dates = document.createElement("p");
+            dates.classList.add("dates");
+            dates.innerHTML = "Inizio evento: " + this.startsAt + "<br>" + "Fine evento: " + this.endsAt;
+
+            let description = null;
+            let room = null;
+
+            if (this.activitiesCount >= 1) {
+                description = document.createElement("p");
+                description.classList.add("description");
+                description.classList.add("text-center")
+                description.innerHTML = "“" + this.activities.description + " „";
+
+                room = document.createElement("p");
+                room.classList.add("room");
+                room.innerHTML = this.activities.room;
+            }
+
+            container.appendChild(title);
+
+            if (this.activitiesCount >= 1 && description != null && room != null) {
+                container.appendChild(description);
+                container.appendChild(room);
+            }
+
+            container.appendChild(dates);
+            container.appendChild(location);
+            card.appendChild(poster);
+            card.appendChild(container);
+
+            return card;
+        }
+    }
+
+    class Activity {
+        constructor(id) {
+
+            this.id = id;
+
+            this.description = null
+            this.buffet = null
+            this.room = null
+            this.hasEntertainment = null
+            this.hasHost = null
+            this.hasGuest = null
+            this.hasExhibitors = null
+            this.hasProducts = null
+
+
+            this.setActivity()
+        }
+
+        setActivity() {
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", "token 1d237fea-70d2-44d0-ad6b-8ea8012838ca");
+
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                redirect: 'follow'
+            };
+
+            fetch("https://events.abattaglia.it/api/event/fee4bdea-2cc0-4045-9253-c184c1f889ea/activity/list", requestOptions)
+                .then(response => response.text())
+                .then(result => {
+
+                    this.setVariables(JSON.parse(result))
+
+                    addEventToPage();
+                })
+                .catch(error => console.log('error', error));
+        }
+
+        setVariables(list) {
+
+            let activityList = list[0];
+
+            this.description = activityList.description;
+            this.buffet = activityList.buffet;
+            this.room = activityList.location;
+            this.hasEntertainment = activityList.hasEntertainment;
+            this.hasHost = activityList.hasHost;
+            this.hasGuest = activityList.hasGuest;
+            this.hasExhibitors = activityList.hasExhibitors;
+            this.hasProducts = activityList.hasProducts;
+        }
+
+        printActivity() {
+            console.log(this.description, this.buffet, this.location, this.hasEntertainment, this.hasHost, this.hasGuest, this.hasExhibitors, this.hasProducts);
+        }
+    }
+
+
+    //     function addEventToPage() {
+    //         let eventDiv = document.getElementById('eventContainer')
+
+    //         //every 2 events, create a new row
+    //         let row = document.createElement('div');
+    //         row.classList.add('row');
+
+    //         //for each event, create a new column
+    //         eventArray.forEach(event => {
+    //             let column = document.createElement('div');
+    //             column.classList.add('col-md-6');
+    //             column.appendChild(event.getCard());
+
+    //             row.appendChild(column);
+    //         })
+    //         eventDiv.appendChild(row);
+
+    //     }
+
+    // });
+
+    function addEventToPage() {
+        let eventDiv = document.getElementById('eventContainer')
+        let friday = document.getElementById('venerdi');
+        let saturday = document.getElementById('sabato');
+
+        fridayEvents = [];
+        saturdayEvents = [];
+
+        eventArray.forEach(event => {
+            let data = event.startsAt;
+            let date = data.split(" ");
+            let day = date[0];
+            day = day.split("-")[2];
+            month = date[0].split("-")[1];
+            year = date[0].split("-")[0];
+
+            let d = new Date(year, month - 1, day);
+
+            if (d.getDay() == 5) {
+                fridayEvents.push(event);
+            }
+            if (d.getDay() == 6) {
+                saturdayEvents.push(event);
+            }
+        })
+        
+        let row = document.createElement('div');
+        row.classList.add('row');
+
+        fridayEvents.forEach(event => {
+            let column = document.createElement('div');
+            column.classList.add('col-md-6');
+            column.appendChild(event.getCard());
+
+            row.appendChild(column)
+        })
+        friday.appendChild(row)
+
+        let row2 = document.createElement('div');
+        row2.classList.add('row');
+
+        saturdayEvents.forEach(event => {
+            let column = document.createElement('div');
+            column.classList.add('col-md-6');
+            column.appendChild(event.getCard());
+
+            row2.appendChild(column)
+        })
+        saturday.appendChild(row2)
+    }
+});
