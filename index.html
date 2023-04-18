@@ -12,11 +12,9 @@
     <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
-
 <body>
     <section>
         <!-- Top navbar -->
-
     </section>
     <!-- First section of landing page -->
     <section class="video-background" style="height: 1080px;">
@@ -121,15 +119,19 @@
             <div class="row">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
-                    <button class="myButton" id="button1">
-                        <p class="myButtonText whiteText text-center myboldtext">Venerdì</p>
-                    </button>
+                    <a href="#venerdi">
+                        <button class="myButton" id="button1" href="#venerdi">
+                            <p class="myButtonText whiteText text-center myboldtext">Venerdì</p>
+                        </button>
+                    </a>
                 </div>
                 <div class="col-sm-2"></div>
                 <div class="col-sm-4">
-                    <button class="myButton" id="button2">
-                        <p class="myButtonText whiteText text-center myboldtext">Sabato</p>
-                    </button>
+                    <a href="#sabato">
+                        <button class="myButton" id="button2">
+                            <p class="myButtonText whiteText text-center myboldtext">Sabato</p>
+                        </button>
+                    </a>
                 </div>
                 <div class="col-sm-1"></div>
             </div>
@@ -149,6 +151,17 @@
                     </button>
                 </a>
             <div>
+            </div>
+        </div>
+    </section>
+    <section id="eventi" class="fix-gap">
+        <hr class="my-hr">
+        <div class="container" id="eventContainer">
+            <div id="venerdi">
+                <p class="pEvents text-center">VENERDI</p>
+            </div>
+            <div id="sabato">
+                <p class="pEvents text-center">SABATO</p>
             </div>
         </div>
     </section>
