@@ -237,6 +237,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             addEvents(eventList);
         })
+        .then(() => {
+            demo()
+        }
+        )
         .catch(error => console.log('error', error));
 
     function addEvents(eventList) {
@@ -306,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 description = document.createElement("p");
                 description.classList.add("description");
                 description.classList.add("text-center")
-                description.innerHTML = "“" + this.activities.description + " „";
+                description.innerHTML = "“ " + this.activities.description + " „";
 
                 room = document.createElement("p");
                 room.classList.add("room");
@@ -357,13 +361,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 redirect: 'follow'
             };
 
-            fetch("https://events.abattaglia.it/api/event/fee4bdea-2cc0-4045-9253-c184c1f889ea/activity/list", requestOptions)
+            fetch("https://events.abattaglia.it/api/event/"+this.id+"/activity/list", requestOptions)
                 .then(response => response.text())
                 .then(result => {
-
+                    console.log(result)
                     this.setVariables(JSON.parse(result))
-
-                    addEventToPage();
                 })
                 .catch(error => console.log('error', error));
         }
@@ -387,29 +389,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
-    //     function addEventToPage() {
-    //         let eventDiv = document.getElementById('eventContainer')
-
-    //         //every 2 events, create a new row
-    //         let row = document.createElement('div');
-    //         row.classList.add('row');
-
-    //         //for each event, create a new column
-    //         eventArray.forEach(event => {
-    //             let column = document.createElement('div');
-    //             column.classList.add('col-md-6');
-    //             column.appendChild(event.getCard());
-
-    //             row.appendChild(column);
-    //         })
-    //         eventDiv.appendChild(row);
-
-    //     }
-
-    // });
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    async function demo() {
+        for (let i = 0; i < 2; i++) {
+            console.log(`Waiting ${i} seconds...`);
+            await sleep(i * 1000);
+        }
+        console.log('Done');
+        addEventToPage();
+    }
 
     function addEventToPage() {
+
+        
         let eventDiv = document.getElementById('eventContainer')
         let friday = document.getElementById('venerdi');
         let saturday = document.getElementById('sabato');
